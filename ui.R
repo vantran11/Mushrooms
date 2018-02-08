@@ -31,8 +31,7 @@ shinyUI(dashboardPage(
         icon = icon("comment")
       ),
       menuItem(
-        "Characteristics of the most 
-        indicative of poisonous",
+        "Characteristics of the most indicative of poisonous",
         tabName = "characteristic",
         icon = icon("graph")
   
@@ -42,7 +41,7 @@ shinyUI(dashboardPage(
 ),
 
   
-  
+
   # Create tab bodies -------------------------------------------------------
   
   dashboardBody(
@@ -78,14 +77,47 @@ shinyUI(dashboardPage(
                     )
                   )))), 
       
-      tabItem(tabName = "characteristic", # Create tab with characteristics graphs(cap.color,odor, gill.color,spore.print.color, habitat, population)
+      
+## Create tab with characteristics graphs(cap.color,odor, gill.color,spore.print.color, habitat, population)-------------------------------------------
+      tabItem(tabName = "characteristic", 
               
               fluidRow(column(
                 6,
                 div(
                   align = 'center',
+                  h4('Habitat'),
+                  box(plotOutput("Hab_plot"), width = 12)
+                ),
+                box(
+                  p(
+                    'This graph shows that mushrooms grow on paths are mostly poisonous.  
+                    As for the mushrooms that grow in the woods, 
+                    there are more edible variety compare to poisonous but there are still a good number of poisonous mushrooms.'
+                  ),
+                  width = 12
+                )
+              ),
+                column(
+                6,
+                div(
+                  align = 'center',
+                  h4('Population'),
+                  box(plotOutput("Pop_plot"), width = 12)
+                ),
+                box(
+                  p(
+                    'According to this graph, mushrooms grown in groups of several are mostly poisonous.  
+                     On the other hand, mushrooms grow in group of abundant are edible most of the time.'
+                  ),
+                  width = 12
+                )
+              ),
+                column(
+                6,
+                div(
+                  align = 'center',
                   h4('Cap Color'),
-                  box(htmlOutput("color"), width = 12)
+                  box(plotOutput("Color_plot"), width = 12)
                 ),
                 box(
                   p(
@@ -100,7 +132,7 @@ shinyUI(dashboardPage(
                 div(
                   align = 'center',
                   h4('Odor'),
-                  box(htmlOutput("odor"), width = 12)
+                  box(plotOutput("Odor"), width = 12)
                 ),
                 box(
                   p(
@@ -113,7 +145,7 @@ shinyUI(dashboardPage(
                   div(
                     align = 'center',
                     h4('Gill Color'),
-                    box(htmlOutput("gill"), width = 12)
+                    box(plotOutput("Gill_plot"), width = 12)
                   ),
                   box(
                     p(
@@ -128,7 +160,7 @@ shinyUI(dashboardPage(
                   div(
                     align = 'center',
                     h4('Spore Print Color'),
-                    box(htmlOutput("spore"), width = 12)
+                    box(plotOutput("Spore_plot"), width = 12)
                   ),
                   box(
                     p(
@@ -136,12 +168,13 @@ shinyUI(dashboardPage(
                     ),
                     width = 12
                   )
-              ))), 
+              )))), 
  
   # Characteristic data-----------------------------------------------------------------------------    
-      tabItem(tabName = "mushroom2",
-              fluidRow(box(DT::dataTableOutput("table_acc"), width = 12))
-      )
-    ))
+      tabItem(tabName = "mush_data",
+              fluidRow(box(DT::dataTableOutput("table_mush_data"), width = 12))
+      
+    )
+  )
   )
 ))

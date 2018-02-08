@@ -25,87 +25,89 @@ shinyServer(function(input, output, session) {
   # Show Characteristic graphs using ggplot2
   
   output$Color_plot <- renderPlot({
-    dataset<- reactive({
-         g <- ggplot(data = dataset(), aes(x=capcolor)) + geom_bar(aes(fill=class), position="dodge")
+    #dataset<- reactive({
+         g <- ggplot(data = mushrooms, aes(x=capcolor)) + geom_bar(aes(fill=class), position="dodge")
          g <- g + xlab ('Cap Color')
          g <- g + ylab ('Edible vs. Poisonous')
          g
-    })
+    #})
   })
          
   output$Odor_plot <- renderPlot({
-    dataset<- reactive({
-        g<-ggplot(data = dataset(), aes(x=odor)) + geom_bar(aes(fill=class), position="dodge")
+    #dataset<- reactive({
+        g <- ggplot(data = mushrooms, aes(x=odor)) + geom_bar(aes(fill=class), position="dodge")
         g <- g + xlab ('Odor')
         g <- g + ylab ('Edible vs. Poisonous')
         g
      
-  })
+  #})
 })
   
   output$Gill_plot <- renderPlot({
-    dataset<- reactive({
-      g<-ggplot(data = dataset(), aes(x=gillcolor)) + geom_bar(aes(fill=class), position="dodge")
+    #dataset<- reactive({
+      g <- ggplot(data = mushrooms, aes(x=gillcolor)) + geom_bar(aes(fill=class), position="dodge")
       g <- g + xlab ('Gill Color')
       g <- g + ylab ('Edible vs. Poisonous')
       g
       
-    })
+   # })
   })
   
   output$Spore_plot <- renderPlot({
-    dataset<- reactive({
-      g<-ggplot(data = dataset(), aes(x=sporecolor)) + geom_bar(aes(fill=class), position="dodge")
+    #dataset<- reactive({
+      g <- ggplot(data = mushrooms, aes(x=sporecolor)) + geom_bar(aes(fill=class), position="dodge")
       g <- g + xlab ('Spore Print Color')
       g <- g + ylab ('Edible vs. Poisonous')
       g
       
-    })
+    #})
   })
   
   output$Pop_plot <- renderPlot({
-    dataset<- reactive({
-      g<-ggplot(data = dataset(), aes(x=population)) + geom_bar(aes(fill=class), position="dodge")
-      g <- g + xlab ('Population of growth')
+    #dataset<- reactive({
+      g <- ggplot(data = mushrooms, aes(x=population)) + geom_bar(aes(fill=class), position="dodge")
+      g <- g + xlab ('Population')
       g <- g + ylab ('Edible vs. Poisonous')
       g
       
-    })
+   # })
   })    
   
   # Habitat chart in floating panel of interactive map
   output$Hab_plot <- renderPlot({
-    dataset<- reactive({
-      g<-ggplot(data = dataset(), aes(x=habitat)) + geom_bar(aes(fill=class), position="dodge")
+    #dataset<- reactive({
+      g <- ggplot(data = mushrooms, aes(x=habitat)) + geom_bar(aes(fill=class), position="dodge")
       g <- g + xlab ('Growing Habitat')
       g <- g + ylab ('Edible vs. Poisonous')
       g
       
-    })
+   # })
   })
   
 
  
   # Data table pages --------------------------------------------------------
   
-  # show data using DataTable using googleVis               ??????????????????????????????????????????????????
-  mushroom2 <- gvisTable(mush_data,formats=list(mush_data="class","Cap Color",
-                                                "Odor","Gill Color","Spore Print Color",
-                                                "Population","Habitat"),
-                         options=list(page='enable'))
-  plot(mushroom2) 
+  # show data using DataTable using googleVis  
+ # mushroom2 <- gvisTable(mush_data,
+  #                       options=list(page='enable'))
+  #plot(mushroom2) 
+ 
+  
   
   ## show data table                                  Which one would work better, this method or googelVis??         
-  #names(mushroom2) <- c('class','Cap Color','Odor','Gill Color','Spore Print Color','Population','Habitat')
-  #output$table_mushroom2 <- DT::renderDataTable({
-   # datatable(mushroom2, 
-     #         rownames = FALSE) %>%
-      #formatStyle(input$selected,
-        #          background = "orange",
-       #           fontWeight = 'bold')
-  #})    
+  names(mush_data) <- c('class','Cap Color','Odor','Gill Color','Spore Print Color','Population','Habitat')
+  output$table_mush_data <- DT::renderDataTable({
+    datatable(mush_data, 
+              rownames = FALSE) %>%
+      formatStyle(input$selected,
+                  background = "red",
+                fontWeight = 'bold')
+  })    
   
 })
+
+
 
 
 
