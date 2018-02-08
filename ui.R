@@ -90,7 +90,7 @@ shinyUI(dashboardPage(
                 ),
                 box(
                   p(
-                    'This graph shows that mushrooms grow on paths are mostly poisonous.  
+                    '     This graph shows that mushrooms grow on paths are mostly poisonous.  
                     As for the mushrooms that grow in the woods, 
                     there are more edible variety compare to poisonous but there are still a good number of poisonous mushrooms.'
                   ),
@@ -106,10 +106,11 @@ shinyUI(dashboardPage(
                 ),
                 box(
                   p(
-                    'According to this graph, mushrooms grown in groups of several are mostly poisonous.  
+                    '
+                        According to this graph, mushrooms grown in groups of several are mostly poisonous.  
                      On the other hand, mushrooms grow in group of abundant are edible most of the time.'
                   ),
-                  width = 12
+                  width = 10
                 )
               ),
                 column(
@@ -132,14 +133,14 @@ shinyUI(dashboardPage(
                 div(
                   align = 'center',
                   h4('Odor'),
-                  box(plotOutput("Odor"), width = 12)
+                  box(plotOutput("Odor_plot"), width = 12)
                 ),
                 box(
                   p(
                     'This graph shows that most edible mushroom have no odor.  Any scent of odor, especially foul, spicy, or fishy indicate that the mushroom is poisonous '
                   ),
                   width = 12
-                ),
+                )),
                 column(
                   6,
                   div(
@@ -168,7 +169,7 @@ shinyUI(dashboardPage(
                     ),
                     width = 12
                   )
-              )))), 
+              ))), 
  
   # Characteristic data-----------------------------------------------------------------------------    
       tabItem(tabName = "mush_data",

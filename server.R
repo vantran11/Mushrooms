@@ -66,7 +66,7 @@ shinyServer(function(input, output, session) {
   output$Pop_plot <- renderPlot({
     #dataset<- reactive({
       g <- ggplot(data = mushrooms, aes(x=population)) + geom_bar(aes(fill=class), position="dodge")
-      g <- g + xlab ('Population')
+      g <- g + xlab ('Population Growth')
       g <- g + ylab ('Edible vs. Poisonous')
       g
       
