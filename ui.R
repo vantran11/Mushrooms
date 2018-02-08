@@ -3,21 +3,21 @@ library(shinydashboard)
 
 suppressPackageStartupMessages(library(shiny))
 suppressPackageStartupMessages(library(shinydashboard))
-suppressPackageStartupMessages(library(leaflet))
 
-mushroom <- read.csv("mushrooms.csv",stringsAsFactors = FALSE)
-mushrooms <- select(mushroom,class,capshape=cap.shape, capsurface=cap.surface,
-                    capcolor=cap.color, bruises, odor,population, habitat, 
-                    gillattachment=gill.attachment, gillspacing=gill.spacing, 
-                    gillsize=gill.size, gillcolor=gill.color, stalkshape=stalk.shape, 
-                    stalkroot=stalk.root, abovering=stalk.surface.above.ring, 
-                    belowring= stalk.surface.below.ring, veiltype=veil.type, 
-                    veilcolor=veil.color, ringnumber=ring.number, ringtype=ring.type, 
-                    sporecolor=spore.print.color,colorabovering=stalk.color.above.ring, colorbelowring=stalk.color.below.ring)
+
+# mushroom <- read.csv("01_data/mushrooms.csv",stringsAsFactors = FALSE)
+# mushrooms <- select(mushroom,class,capshape=cap.shape, capsurface=cap.surface,
+#                     capcolor=cap.color, bruises, odor,population, habitat, 
+#                     gillattachment=gill.attachment, gillspacing=gill.spacing, 
+#                     gillsize=gill.size, gillcolor=gill.color, stalkshape=stalk.shape, 
+#                     stalkroot=stalk.root, abovering=stalk.surface.above.ring, 
+#                     belowring= stalk.surface.below.ring, veiltype=veil.type, 
+#                     veilcolor=veil.color, ringnumber=ring.number, ringtype=ring.type, 
+#                     sporecolor=spore.print.color,colorabovering=stalk.color.above.ring, colorbelowring=stalk.color.below.ring)
 
 
 shinyUI(dashboardPage(
-  skin = 'orange',
+  skin = 'red',
   dashboardHeader(title = "Mushrooms"), # Create header top left
   
   
@@ -39,10 +39,9 @@ shinyUI(dashboardPage(
       ),
       menuItem("Mushroom Data", tabName = "mush_data", icon = icon("database"))
       )
-    )
-  )
+),
+
   
-)
   
   # Create tab bodies -------------------------------------------------------
   
@@ -79,7 +78,7 @@ shinyUI(dashboardPage(
                     )
                   )))), 
       
-      tabItem(tabName = "characteristic", # Create tab with characteristics graphs(cap.color,odor, gill.color,spore.print.color)
+      tabItem(tabName = "characteristic", # Create tab with characteristics graphs(cap.color,odor, gill.color,spore.print.color, habitat, population)
               
               fluidRow(column(
                 6,
@@ -140,8 +139,9 @@ shinyUI(dashboardPage(
               ))), 
  
   # Characteristic data-----------------------------------------------------------------------------    
-      tabItem(tabName = "acc_data",
+      tabItem(tabName = "mushroom2",
               fluidRow(box(DT::dataTableOutput("table_acc"), width = 12))
       )
     ))
-)
+  )
+))

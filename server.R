@@ -7,15 +7,15 @@ suppressPackageStartupMessages(library(ggplot2))
 suppressPackageStartupMessages(library(htmltools))
 suppressPackageStartupMessages(library(dplyr))
 
-mushroom <- read.csv("mushrooms.csv",stringsAsFactors = FALSE)
-mushrooms <- select(mushroom,class,capshape=cap.shape, capsurface=cap.surface,
-                    capcolor=cap.color, bruises, odor,population, habitat, 
-                    gillattachment=gill.attachment, gillspacing=gill.spacing, 
-                    gillsize=gill.size, gillcolor=gill.color, stalkshape=stalk.shape, 
-                    stalkroot=stalk.root, abovering=stalk.surface.above.ring, 
-                    belowring= stalk.surface.below.ring, veiltype=veil.type, 
-                    veilcolor=veil.color, ringnumber=ring.number, ringtype=ring.type, 
-                    sporecolor=spore.print.color,colorabovering=stalk.color.above.ring, colorbelowring=stalk.color.below.ring)
+# mushroom <- read.csv("01_data/mushrooms.csv",stringsAsFactors = FALSE)
+# mushrooms <- select(mushroom,class,capshape=cap.shape, capsurface=cap.surface,
+#                     capcolor=cap.color, bruises, odor,population, habitat, 
+#                     gillattachment=gill.attachment, gillspacing=gill.spacing, 
+#                     gillsize=gill.size, gillcolor=gill.color, stalkshape=stalk.shape, 
+#                     stalkroot=stalk.root, abovering=stalk.surface.above.ring, 
+#                     belowring= stalk.surface.below.ring, veiltype=veil.type, 
+#                     veilcolor=veil.color, ringnumber=ring.number, ringtype=ring.type, 
+#                     sporecolor=spore.print.color,colorabovering=stalk.color.above.ring, colorbelowring=stalk.color.below.ring)
 
 
 shinyServer(function(input, output, session) {
@@ -95,7 +95,7 @@ shinyServer(function(input, output, session) {
                          options=list(page='enable'))
   plot(mushroom2) 
   
-  ## show data table                                  Which one would work better, your method or googelVis??         
+  ## show data table                                  Which one would work better, this method or googelVis??         
   #names(mushroom2) <- c('class','Cap Color','Odor','Gill Color','Spore Print Color','Population','Habitat')
   #output$table_mushroom2 <- DT::renderDataTable({
    # datatable(mushroom2, 

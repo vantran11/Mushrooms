@@ -1,9 +1,10 @@
 #global.R Mushrooms
 
+library(dplyr)
 library(data.table)
 
 # Mushroom data
-mushroom <- read.csv("mushrooms.csv",stringsAsFactors = FALSE)
+mushroom <- read.csv("01_data/mushrooms.csv",stringsAsFactors = FALSE)
 mushrooms <- select(mushroom,class,capshape=cap.shape, capsurface=cap.surface,
                     capcolor=cap.color, bruises, odor,population, habitat, 
                     gillattachment=gill.attachment, gillspacing=gill.spacing, 
@@ -14,6 +15,6 @@ mushrooms <- select(mushroom,class,capshape=cap.shape, capsurface=cap.surface,
                     sporecolor=spore.print.color,colorabovering=stalk.color.above.ring, colorbelowring=stalk.color.below.ring)
 
 ## filtered for mush_data 
-mush_data<- select= c(mushroom,class,capcolor=cap.color, odor,population, habitat, gillcolor=gill.color,sporecolor=spore.print.color)
+mush_data<- select(mushroom,class,capcolor=cap.color, odor,population, habitat, gillcolor=gill.color,sporecolor=spore.print.color)
 
 
